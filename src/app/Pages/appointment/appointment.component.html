@@ -1,0 +1,52 @@
+<div class="form" [formGroup]="formClass" (ngSubmit)="Submition()">
+<h1>Make Appointment</h1>
+
+<form>
+    <div class="mb-3 col-md-6">
+      <input type="text" class="form-control" placeholder="Enter your Name" formControlName="name">
+      <div *ngIf="formClass.get('name')?.hasError('required') && formClass.get('name')?.touched" style="color: red;" class="form-text">Name is required</div>
+    </div>
+
+    <div class="mb-3 col-md-6"> 
+        <input type="email" class="form-control" placeholder="Enter your Email" formControlName="email">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <div *ngIf="formClass.get('email')?.hasError('email') && formClass.get('email')?.touched" style="color: red;">Mail address should be (*****@gmail.com)</div>
+      </div>
+
+      
+    <div class="mb-3 col-md-6"> 
+        <input type="email" class="form-control" placeholder="Phone Number (+975-********)" formControlName="num">
+        <div id="emailHelp" class="form-text">We'll never share your number with anyone else.</div>
+        <div *ngIf="formClass.get('num')?.hasError('pattern') && formClass.get('num')?.touched" class="form-text" style="color: red;">Follow the required pattern(+975-********)</div>
+      </div>
+
+      
+    <div class="mb-3 col-md-6"> 
+      <label for="">Appointment Date</label>
+        <input type="date" class="form-control" placeholder="Appointment Date" formControlName="appd">
+        <div *ngIf="formClass.get('appd')?.hasError('required') && formClass.get('appd')?.touched" style="color: red;" class="form-text">Appointment date is required</div>
+      </div>
+
+      <div class="col-md-6">
+        <select name="" id=""  formControlName="status" class="form-control col-md-6" formControlName="sdepartment">
+          <option value="">Select Department</option>
+          <option [value]="item" *ngFor="let item of department">{{item}}</option>
+          <div *ngIf="formClass.get('sdepartment')?.hasError('required') && formClass.get('sdapartment')?.touched" style="color: red;" class="form-text">Department selection is required</div>
+    </select>
+      </div>
+    
+
+    <div class="col-md-6 mt-3">
+      <select name="" id=""  formControlName="status" class="form-control col-md-6" formControlName="doctor">
+        <option value="">Select Doctor</option>
+        <option [value]="item" *ngFor="let item of doctors">{{item}}</option>
+        <div *ngIf="formClass.get('doctor')?.hasError('required') && formClass.get('doctor')?.touched" style="color: red;" class="form-text">Doctor selection is required</div>
+  </select>  
+  <div class="mb-3 col-md-6"> 
+    <textarea name="" id="f" cols="" rows="" class="form-control mt-3" placeholder="Message(Optional)" formControlName="message"></textarea>
+  </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3 mb-5" [disabled]="formClass.invalid">Submit</button>
+  </form>
+
+</div>

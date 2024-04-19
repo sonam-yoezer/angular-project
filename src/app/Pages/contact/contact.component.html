@@ -1,0 +1,72 @@
+<section id="contact" class="contact">
+    <div class="container">
+<div class="content">
+    <div class="section-title contact">
+        <br>
+        <h2>Contact Us</h2>
+        <p></p>
+      </div>
+    </div>
+</div>
+      
+
+   
+    <div class="container">
+      <div class="row mt-5">
+
+        <div class="col-lg-4">
+          <div class="info">
+            <div class="address">
+              <h4>Location:</h4>
+              <p>Thimphu, Babena, Bhutan</p>
+            </div>
+
+            <div class="email">
+              <i class="bi bi-envelope"></i>
+              <h4>Email:</h4>
+              <p>hcsBhutan@gmail.com</p>
+            </div>
+
+            <div class="phone">
+              <i class="bi bi-phone"></i>
+              <h4>Call:</h4>
+              <p>+975-17345678</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-8 mt-5 mt-lg-0">
+
+        <div>
+            <form [formGroup]="formMessage" (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" formControlName="name">
+                    <div *ngIf="formMessage.get('name')?.hasError('required') && formMessage.get('name')?.touched" style="color: red;" class="form-text">Name is required</div>
+                  </div>
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"formControlName="email">
+                    <div *ngIf="formMessage.get('email')?.hasError('email') && formMessage.get('email')?.touched" style="color: red;" class="form-text">Enter required pattern (****@gmail.com)</div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" formControlName="subject">
+                  <div *ngIf="formMessage.get('subject')?.hasError('required') && formMessage.get('subject')?.touched" style="color: red;" class="form-text">Subject is required</div>
+                </div>
+                <div class="form-group mt-3">
+                  <textarea class="form-control" name="message" rows="5" placeholder="Message" formControlName="message"></textarea>
+                  <div *ngIf="formMessage.get('message')?.hasError('required') && formMessage.get('message')?.touched" style="color: red;" class="form-text">Message is required</div>
+                </div>
+                <button type="submit" class="btn btn-primary text-light mb-5 mt-2" [disabled]="formMessage.invalid">Submit</button>
+              </form>
+        </div>
+          
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
